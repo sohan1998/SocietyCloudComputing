@@ -378,7 +378,7 @@ INSERT INTO `wing` (`wing_id`, `society_id`, `wing_name`, `no_of_floors`, `total
 --
 DROP TABLE IF EXISTS `admin_flat`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `admin_flat`  AS  select `admin`.`acc_name` AS `acc_name`,`resident`.`flat_id` AS `flat_id` from (((`admin` join `committee_member` on((`admin`.`resident_id` = `committee_member`.`resident_id`))) join `resident` on((`admin`.`resident_id` = `resident`.`resident_id`))) join `flat` on((`resident`.`flat_id` = `flat`.`flat_id`))) ;
+CREATE VIEW `admin_flat`  AS  select `admin`.`acc_name` AS `acc_name`,`resident`.`flat_id` AS `flat_id` from (((`admin` join `committee_member` on((`admin`.`resident_id` = `committee_member`.`resident_id`))) join `resident` on((`admin`.`resident_id` = `resident`.`resident_id`))) join `flat` on((`resident`.`flat_id` = `flat`.`flat_id`))) ;
 
 -- --------------------------------------------------------
 
@@ -387,7 +387,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `maintenance_bill`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `maintenance_bill`  AS  select `basic_maintenance_bill`.`bill_num` AS `bill_num`,`basic_maintenance_bill`.`flat_id` AS `flat_id`,`basic_maintenance_bill`.`bill_date` AS `bill_date`,`basic_maintenance_bill`.`water_charges` AS `water_charges`,`basic_maintenance_bill`.`property_tax` AS `property_tax`,`basic_maintenance_bill`.`elec_charges` AS `elec_charges`,`basic_maintenance_bill`.`sinking_fund` AS `sinking_fund`,`basic_maintenance_bill`.`parking_charges` AS `parking_charges`,`basic_maintenance_bill`.`noc` AS `noc`,`basic_maintenance_bill`.`insurance` AS `insurance`,`basic_maintenance_bill`.`other` AS `other`,`basic_maintenance_bill`.`due_date` AS `due_date`,(((((((`basic_maintenance_bill`.`water_charges` + `basic_maintenance_bill`.`property_tax`) + `basic_maintenance_bill`.`elec_charges`) + `basic_maintenance_bill`.`sinking_fund`) + `basic_maintenance_bill`.`parking_charges`) + `basic_maintenance_bill`.`noc`) + `basic_maintenance_bill`.`insurance`) + `basic_maintenance_bill`.`other`) AS `amount`,`basic_maintenance_bill`.`down_doc` AS `down_doc` from `basic_maintenance_bill` ;
+CREATE VIEW `maintenance_bill`  AS  select `basic_maintenance_bill`.`bill_num` AS `bill_num`,`basic_maintenance_bill`.`flat_id` AS `flat_id`,`basic_maintenance_bill`.`bill_date` AS `bill_date`,`basic_maintenance_bill`.`water_charges` AS `water_charges`,`basic_maintenance_bill`.`property_tax` AS `property_tax`,`basic_maintenance_bill`.`elec_charges` AS `elec_charges`,`basic_maintenance_bill`.`sinking_fund` AS `sinking_fund`,`basic_maintenance_bill`.`parking_charges` AS `parking_charges`,`basic_maintenance_bill`.`noc` AS `noc`,`basic_maintenance_bill`.`insurance` AS `insurance`,`basic_maintenance_bill`.`other` AS `other`,`basic_maintenance_bill`.`due_date` AS `due_date`,(((((((`basic_maintenance_bill`.`water_charges` + `basic_maintenance_bill`.`property_tax`) + `basic_maintenance_bill`.`elec_charges`) + `basic_maintenance_bill`.`sinking_fund`) + `basic_maintenance_bill`.`parking_charges`) + `basic_maintenance_bill`.`noc`) + `basic_maintenance_bill`.`insurance`) + `basic_maintenance_bill`.`other`) AS `amount`,`basic_maintenance_bill`.`down_doc` AS `down_doc` from `basic_maintenance_bill` ;
 
 --
 -- Indexes for dumped tables

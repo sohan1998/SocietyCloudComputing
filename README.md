@@ -56,7 +56,7 @@ python3 -m flask run
 
 #host is optional, and should not matter unless you want to test the application on a physical device on your network.
 ```
-5. To save dependencies list in your dependencies.txt file
+5. To save dependencies list in your requirements.txt file
 ```shell
-pip3 freeze > dependencies.txt 
+pip3 freeze > requirements.txt 
 ```
